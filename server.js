@@ -40,8 +40,8 @@ app.delete('/user', (req, res) => {
 });
 
 app.post('/rewrite', (req, res) => {
-  console.log(req.body);
-  console.log(req.query);
+  // console.log(req.body);
+  // console.log(req.query);
 
   const id = req.body.params.id;
   const firstName = req.body.params.data.firstName;
