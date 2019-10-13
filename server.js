@@ -44,9 +44,6 @@ app.post('/rewrite', (req, res) => {
   // console.log(req.query);
 
   const id = req.body.params.id;
-  // const firstName = req.body.params.data.firstName;
-  // const secondName = req.body.params.data.secondName;
-  // const email = req.body.params.data.email;
   const data = req.body.params.data;
 
   const result = rewrite(users, id, data);
