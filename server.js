@@ -2,7 +2,7 @@ const { join } = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 let { users } = require('./data');
-
+const { rewrite } = require('./utils/index');
 // TODO users to data.js
 // let users = [
 //   {
@@ -44,21 +44,12 @@ app.post('/rewrite', (req, res) => {
   // console.log(req.query);
 
   const id = req.body.params.id;
-  const firstName = req.body.params.data.firstName;
-  const secondName = req.body.params.data.secondName;
-  const email = req.body.params.data.email;
+  // const firstName = req.body.params.data.firstName;
+  // const secondName = req.body.params.data.secondName;
+  // const email = req.body.params.data.email;
+  const data = req.body.params.data;
 
-  const rewrite = (id, firstName, secondName, email) => {
-    users.forEach(item => {
-      if (item.id == id) {
-        firstName ? (item.firstName = firstName) : console.log(item.firstName);
-        secondName ? (item.secondName = secondName) : null;
-        email ? (item.email = email) : null;
-      }
-    });
-  };
-
-  const result = rewrite(id, firstName, secondName, email);
+  const result = rewrite(users, id, data);
 
   res.send(result);
 });
