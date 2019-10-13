@@ -1,16 +1,17 @@
 const { join } = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+let { users } = require('./data');
 
 // TODO users to data.js
-let users = [
-  {
-    //TODO id
-    firstName: 'Pavel',
-    secondName: 'Efimov',
-    email: 'test@gmail.com'
-  }
-];
+// let users = [
+//   {
+//     //TODO id
+//     firstName: 'Pavel',
+//     secondName: 'Efimov',
+//     email: 'test@gmail.com'
+//   }
+// ];
 
 const app = express();
 
@@ -33,8 +34,33 @@ app.post('/user', (req, res) => {
 });
 
 app.delete('/user', (req, res) => {
-  // TODO make something
+  // TODO make something;
+  users = users.filter(user => user.id != req.query.id);
   res.sendStatus(200);
 });
 
-app.listen(3000, () => console.log('port 3000'));
+app.post('/rewrite', (req, res) => {
+  console.log(req.body);
+  console.log(req.query);
+
+  const id = req.body.params.id;
+  const firstName = req.body.params.data.firstName;
+  const secondName = req.body.params.data.secondName;
+  const email = req.body.params.data.email;
+
+  const rewrite = (id, firstName, secondName, email) => {
+    users.forEach(item => {
+      if (item.id == id) {
+        firstName ? (item.firstName = firstName) : console.log(item.firstName);
+        secondName ? (item.secondName = secondName) : null;
+        email ? (item.email = email) : null;
+      }
+    });
+  };
+
+  const result = rewrite(id, firstName, secondName, email);
+
+  res.send(result);
+});
+
+app.listen(5000, () => console.log('port 5000'));

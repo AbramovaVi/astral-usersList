@@ -18,8 +18,8 @@ class App extends Component {
       .catch(showError);
   };
 
-  deleteUser = firstName => () => {
-    deleteUser(firstName)
+  deleteUser = id => () => {
+    deleteUser(id)
       .then(() => {
         this.updateUsersList();
       })
@@ -38,7 +38,11 @@ class App extends Component {
 
     return (
       <div>
-        <UsersList data={users} deleteUser={deleteUser} />
+        <UsersList
+          data={users}
+          deleteUser={deleteUser}
+          updateUsersList={updateUsersList}
+        />
         <Form updateUsersList={updateUsersList} />
       </div>
     );
