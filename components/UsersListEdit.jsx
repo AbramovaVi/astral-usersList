@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UserListInputs from './UsersListInputs';
 
-const UsersListEdit = ({ deleteUser, item, rewrite, updateUsersList }) => {
+const UsersListEdit = ({ deleteUser, item, updateUsersList }) => {
   const [openEdit, setOpenEdit] = useState(false);
   const edit = () => setOpenEdit(!openEdit);
 
@@ -13,7 +13,6 @@ const UsersListEdit = ({ deleteUser, item, rewrite, updateUsersList }) => {
         <UserListInputs
           item={item}
           updateUsersList={updateUsersList}
-          rewrite={rewrite}
           setOpen={setOpenEdit}
         />
       )}

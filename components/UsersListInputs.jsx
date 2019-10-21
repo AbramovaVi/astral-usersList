@@ -1,18 +1,7 @@
-import React, { Component } from 'react';
-import { createUser, rewriteUser } from 'source/index';
+import React from 'react';
+import { rewriteUser } from 'source/index';
 import { showError } from 'utils/index';
 import { useState } from 'react';
-
-// const Inputs = ({ name, secondName, email }) => (
-// class Inputs extends Component {
-//   constructor(props) {
-//     super(props);
-
-const user = {
-  firstName: '',
-  secondName: '',
-  email: ''
-};
 
 const UsersListInputs = props => {
   const { users } = props;

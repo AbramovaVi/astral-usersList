@@ -1,12 +1,7 @@
 import React from 'react';
 import UsersListEdit from './UsersListEdit';
-import { rewriteUser } from 'source/index';
 
 const UsersList = ({ data, deleteUser, updateUsersList }) => {
-  const rewriteData = (id, data) => {
-    rewriteUser(id, data).then(res => console.log(res));
-  };
-
   return (
     <div className="UsersList">
       {data.length !== 0 ? (
@@ -18,7 +13,6 @@ const UsersList = ({ data, deleteUser, updateUsersList }) => {
               <p>{`Email: ${item.email}`}</p>
               <UsersListEdit
                 updateUsersList={updateUsersList}
-                rewrite={rewriteData}
                 deleteUser={deleteUser}
                 item={item}
               />

@@ -10,7 +10,7 @@ class Form extends Component {
     this.state = {
       firstName: '',
       secondName: '',
-      email: ''
+      email: 'no data'
     };
 
     this.changeValue = this.changeValue.bind(this);
@@ -36,31 +36,20 @@ class Form extends Component {
 
   render() {
     const { changeValue } = this;
-    const { firstName, secondName, email } = this.state;
 
     return (
       <form onSubmit={this.onSubmit} className="Form">
         <label>
           Имя
-          <input
-            required
-            type="text"
-            onChange={changeValue('firstName')}
-            value={firstName}
-          />
+          <input required type="text" onChange={changeValue('firstName')} />
         </label>
         <label>
           Фамилия
-          <input
-            required
-            type="text"
-            onChange={changeValue('secondName')}
-            value={secondName}
-          />
+          <input required type="text" onChange={changeValue('secondName')} />
         </label>
         <label>
           Email
-          <input type="email" onChange={changeValue('email')} value={email} />
+          <input type="email" onChange={changeValue('email')} />
         </label>
         <button>Сохранить</button>
       </form>
