@@ -37,13 +37,13 @@ class App extends Component {
     const { users } = this.state;
 
     return (
-      <div>
+      <div className='App'>
+        <Form updateUsersList={updateUsersList} users={users} />
         <UsersList
           data={users}
           deleteUser={deleteUser}
           updateUsersList={updateUsersList}
         />
-        <Form updateUsersList={updateUsersList} />
       </div>
     );
   }

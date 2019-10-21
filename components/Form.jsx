@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { createUser } from 'source';
-
 import { showError } from 'utils';
 
 class Form extends Component {
@@ -31,24 +30,37 @@ class Form extends Component {
         updateUsersList();
       })
       .catch(showError);
+
+    this.setState({ firstName: '', secondName: '', email: '' });
   }
 
   render() {
     const { changeValue } = this;
+    const { firstName, secondName, email } = this.state;
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="Form">
         <label>
           Имя
-          <input type="text" onChange={changeValue('firstName')} />
+          <input
+            required
+            type="text"
+            onChange={changeValue('firstName')}
+            value={firstName}
+          />
         </label>
         <label>
           Фамилия
-          <input type="text" onChange={changeValue('secondName')} />
+          <input
+            required
+            type="text"
+            onChange={changeValue('secondName')}
+            value={secondName}
+          />
         </label>
         <label>
           Email
-          <input type="email" onChange={changeValue('email')} />
+          <input type="email" onChange={changeValue('email')} value={email} />
         </label>
         <button>Сохранить</button>
       </form>
