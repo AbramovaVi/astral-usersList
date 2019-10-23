@@ -4,11 +4,11 @@ import { showError } from 'utils/index';
 import { useState } from 'react';
 
 const UsersListInputs = props => {
-  const { users } = props;
-  const { setOpen } = props;
-  const [user, setUsers] = useState(users);
-  const changeValue = field => ({ target }) => {
-    setUsers({ [field]: target.value });
+  const { item, setOpen } = props;
+  const [user, setUsers] = useState(item);
+  const changeValue = e => {
+    const { name, value } = e.target;
+    setUsers(prevState => ({ ...prevState, [name]: value }));
   };
   const onSubmit = e => {
     e.preventDefault();
@@ -26,25 +26,25 @@ const UsersListInputs = props => {
   const { firstName, secondName, email } = props.item;
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', width: '100px', margin: 'auto'}}>
         <input
           type="text"
-          onChange={changeValue('firstName')}
+          onChange={changeValue}
+          name="firstName"
           placeholder={firstName}
         />
-        <br />
         <input
           type="text"
-          onChange={changeValue('secondName')}
+          onChange={changeValue}
           placeholder={secondName}
+          name="secondName"
         />
-        <br />
         <input
           type="email"
-          onChange={changeValue('email')}
+          onChange={changeValue}
           placeholder={email}
+          name="email"
         />
-        <br />
         <button>Сохранить</button>
       </form>
     </>
